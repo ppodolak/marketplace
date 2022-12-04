@@ -94,11 +94,11 @@ const { wallets } = getDefaultWallets({
   chains,
 })
 
+console.log(wallets)
+
 wallets.push({
   groupName: 'Other',
-    wallets: [
-        rainbowMagicConnector({chains})
-    ]
+  wallets: [rainbowMagicConnector({ chains })],
 })
 
 const connectors = connectorsForWallets(wallets)
