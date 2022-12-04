@@ -51,7 +51,7 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
 
-import { rainbowMagicConnector } from 'lib/wagmiConnectors/RainbowMagicConnector'
+import { rainbowMagicConnector } from 'lib/wagmiConnectors/rainbowMagicConnector'
 
 // Select a custom ether.js interface for connecting to a network
 // Reference = https://wagmi-xyz.vercel.app/docs/provider#provider-optional
