@@ -45,9 +45,13 @@ import {
   RainbowKitProvider,
   darkTheme as rainbowKitDarkTheme,
   lightTheme as rainbowKitLightTheme,
+  connectorsForWallets,
 } from '@rainbow-me/rainbowkit'
+
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { publicProvider } from 'wagmi/providers/public'
+
+import { rainbowMagicConnector } from 'lib/wagmiConnectors/RainbowMagicConnector'
 
 // Select a custom ether.js interface for connecting to a network
 // Reference = https://wagmi-xyz.vercel.app/docs/provider#provider-optional
@@ -85,10 +89,19 @@ const { chains, provider } = configureChains(
   [alchemyProvider({ apiKey: alchemyId }), publicProvider()]
 )
 
-const { connectors } = getDefaultWallets({
+const { wallets } = getDefaultWallets({
   appName: SOURCE_NAME || 'Reservoir Market',
   chains,
 })
+
+wallets.push({
+  groupName: 'Other',
+    wallets: [
+        rainbowMagicConnector({chains})
+    ]
+})
+
+const connectors = connectorsForWallets(wallets)
 
 const wagmiClient = createClient({
   autoConnect: true,
